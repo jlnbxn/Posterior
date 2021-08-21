@@ -37,6 +37,19 @@ module.exports = {
         style: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-use-shopping-cart`,
+      options: {
+        mode: 'payment',
+        cartMode: 'checkout-session',
+        stripePublicKey: process.env.GATSBY_STRIPE_PUBLISHABLE_KEY,
+        successUrl: `${process.env.GATSBY_URL}/success`,
+        cancelUrl: `${process.env.GATSBY_URL}/cancel`,
+        currency: 'EUR',
+        allowedCountries: ['AT', 'GB', 'DE'],
+        billingAddressCollection: true,
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-react-svg',

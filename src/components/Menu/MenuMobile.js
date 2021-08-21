@@ -246,7 +246,10 @@ function MenuMobile() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const html = document.querySelector('html');
+  let html;
+  useEffect(() => {
+    html = document.querySelector('html');
+  }, []);
 
   const onFinish = (value) => {
     console.log('Success:', value);

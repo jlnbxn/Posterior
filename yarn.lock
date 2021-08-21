@@ -6495,6 +6495,13 @@ gatsby-plugin-typescript@^3.11.0:
     "@babel/runtime" "^7.14.6"
     babel-plugin-remove-graphql-queries "^3.11.0"
 
+gatsby-plugin-use-shopping-cart@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-use-shopping-cart/-/gatsby-plugin-use-shopping-cart-0.0.1.tgz#50d96b0d49a5c9e5bb8a365f0830651bdbd96939"
+  integrity sha512-jx1jw4mTIlP/fYdgL601rkDknSIiyWZEzpMeK5ZfeLZXoDHpPRVuNCKL01wWOz+1DgHkqtcD8U15Gr9uaB+DLA==
+  dependencies:
+    use-shopping-cart "^3.0.0-beta.17"
+
 gatsby-plugin-utils@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-1.11.0.tgz#f4c76e991fbda81d3dcafe93beaf37e830331a55"
@@ -14257,10 +14264,10 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
-use-shopping-cart@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/use-shopping-cart/-/use-shopping-cart-3.0.0.tgz#36092741096eeeb6e9ec159b8fae1f376cd23cbd"
-  integrity sha512-8hTOiOqbN2zPxxuh2oRhTGaKYTdNa+xqT+CUnMx4Wyi1AK2O6ZXjoehy/w2xkj8JzUITilTp4tfo8yKeeZhryQ==
+use-shopping-cart@^3.0.0-beta.17, use-shopping-cart@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/use-shopping-cart/-/use-shopping-cart-3.0.1.tgz#91773eb5a2ed58514428c162ddfc45ee79e12298"
+  integrity sha512-gSrO/5sEQu0JF5tGEfu5eMll9ci1f24RhchRwfwg+LxEwm68UpgdxRWqqD/MAtBhMpFppIr3ArbnMHvtUD4i8Q==
   dependencies:
     "@reduxjs/toolkit" "^1.5.0"
     "@rollup/plugin-replace" "^2.4.2"
