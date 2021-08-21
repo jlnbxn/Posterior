@@ -1,36 +1,91 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "posterior",
+    siteUrl: 'https://www.yourdomain.tld',
+    title: 'posterior',
   },
   plugins: [
-    "gatsby-plugin-emotion",
-    "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-image',
+    'gatsby-plugin-react-helmet',
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: "src/images/icon.png",
+        icon: 'src/images/icon.png',
       },
     },
-    "gatsby-transformer-remark",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    'gatsby-transformer-remark',
+    'gatsby-plugin-sharp',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-plugin-less',
       options: {
-        name: "images",
-        path: "./src/images/",
+        lessOptions: {
+          javascriptEnabled: true,
+          modifyVars: {
+            'font-family': `Roboto`,
+            'slider-rail-background-color-hover': '#222',
+          },
+        },
       },
-      __key: "images",
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-plugin-antd',
       options: {
-        name: "pages",
-        path: "./src/pages/",
+        style: true,
       },
-      __key: "pages",
+    },
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /src\/images\/svg/,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: './src/images/',
+      },
+      __key: 'images',
+    },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
+      },
+    },
+    'gatsby-plugin-breadcrumb',
+    {
+      resolve: `gatsby-source-stripe`,
+      options: {
+        objects: ['Product', 'Price'],
+        secretKey:
+          'sk_test_51JKgT9ASZ4DgRI1rm0uV257Pzt9gD9hfHDrNpqZCe3T5hfnxNCvLdYlTMvArntlAxEHQNITQQWtmPz3TsjhpIDCh00UxvIcBoR',
+        downloadFiles: true,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'products',
+        path: `${__dirname}/src/images/products/`,
+      },
+      __key: 'products',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: './src/pages/',
+      },
+      __key: 'pages',
     },
   ],
 };
