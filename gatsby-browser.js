@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from './src/components/layout/Layout';
+import Layout from './src/components/Layout/Layout';
 import PosteriorContextProvider from './src/context/PosteriorContext';
 import { CartProvider } from 'use-shopping-cart';
 
