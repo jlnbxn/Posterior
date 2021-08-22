@@ -48,5 +48,12 @@
     "rollup": "^2.56.2",
     "stripe": "^8.169.0",
     "use-shopping-cart": "^3.0.1"
+  },
+  "devDependencies": {
+    "axios": "^0.21.1",
+    "color-namer": "^1.4.0",
+    "colorthief": "^2.3.2",
+    "he": "^1.2.0",
+    "node-fetch": "^2.6.1"
   }
 }

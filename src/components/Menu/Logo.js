@@ -16,13 +16,13 @@ const Root = styled.div`
     height: 60px;
     width: 130px;
   }
-
   svg {
     display: block;
     max-width: 100%;
     max-height: 100%;
   }
 `;
+
 const LogoLink = styled(Link)`
   position: absolute;
   top: 50%;

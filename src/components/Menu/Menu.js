@@ -1,12 +1,173 @@
-import { css } from '@emotion/react';
-import React, { useContext, useEffect, useState } from 'react';
-import HeaderLogo from '../../images/svg/logo.svg';
-import { SearchOutlined, CloseOutlined } from '@ant-design/icons';
-import { Link, navigate } from 'gatsby';
-import { Col, Row, Form, Input, Button } from 'antd';
 import styled from '@emotion/styled';
-import { PosteriorContext } from '../../context/PosteriorContext';
+import { Col, Row, Button } from 'antd';
+import { Link, navigate } from 'gatsby';
+import React, { useEffect, useState } from 'react';
+import Logo from './Logo';
+import HeaderLogo from '../../images/svg/logo.svg';
+import {
+  UserOutlined,
+  SearchOutlined,
+  HeartOutlined,
+  CloseOutlined,
+} from '@ant-design/icons';
+import { css } from '@emotion/react';
 import ShoppingCartWithBadge from './ShoppingCartWithBadge';
+import Search from './Search';
+import { useMediaQuery } from 'react-responsive';
+
+const submenus = [
+  {
+    title: 'Paintings',
+    route: '/',
+  },
+  {
+    title: 'Prints',
+    route: '/',
+  },
+  {
+    title: 'Photos',
+    route: '/',
+  },
+  {
+    title: 'Drawings',
+    route: '/',
+  },
+  {
+    title: 'Sculpture',
+    route: '/',
+  },
+  {
+    title: 'Artists',
+    route: '/',
+  },
+  {
+    title: 'Advisory',
+    route: '/',
+  },
+  {
+    title: 'Blog',
+    route: '/',
+  },
+];
+
+const icons = [
+  {
+    title: 'User',
+    route: '/',
+    component: <UserOutlined />,
+  },
+  {
+    title: 'Basket',
+    route: '/basket',
+    component: <ShoppingCartWithBadge />,
+  },
+
+  {
+    title: 'Paintings',
+    route: '/',
+    component: <HeartOutlined />,
+  },
+];
+
+const MenuWrapper = styled.ul`
+  border: 0;
+  box-shadow: none;
+  z-index: 0;
+  outline: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  z-index: auto;
+  color: #343434;
+  line-height: 46px;
+  transition: background 0.3s, width 0.3s;
+  position: static;
+  top: 0;
+  display: block;
+  background: none;
+  white-space: nowrap;
+  border-bottom: none;
+  box-shadow: none;
+  height: 100%;
+  @media only screen and (min-width: 600px) {
+    margin-right: 10px;
+  }
+  @media only screen and (min-width: 1024px) {
+    max-width: 100%;
+  }
+`;
+const SubMenu = styled.li`
+  margin-top: 0;
+  transition: none;
+  position: relative;
+  top: 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+  @media only screen and (min-width: 1024px) {
+    position: static;
+    height: 100%;
+  }
+`;
+
+const SubMenuTitle = styled.div`
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 400;
+  width: 100%;
+  transition: none;
+  padding: 0 3px;
+  margin: 0;
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  display: table-cell;
+  .anticon {
+    margin-right: 0;
+    padding: 0 4px;
+    font-size: 18px;
+    min-width: 14px;
+    margin-right: 8px;
+    transition: font-size 0.15s cubic-bezier(0.215, 0.61, 0.355, 1),
+      margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    svg {
+      margin-top: -4px;
+    }
+  }
+
+  @media only screen and (min-width: 600px) {
+    padding: 0 10px;
+  }
+  @media only screen and (min-width: 1024px) {
+    height: 100%;
+    display: table;
+  }
+  @media only screen and (min-width: 1024px) and (max-width: 1279px) {
+    padding: 0 5px;
+  }
+`;
+
+const SubMenuLink = styled.div`
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 400;
+  width: 100%;
+  transition: none;
+  display: table-cell;
+  text-decoration: none;
+  cursor: pointer;
+  @media only screen and (min-width: 1024px) {
+    padding-top: 2px;
+    vertical-align: middle;
+  }
+`;
 
 const Header = styled.header`
   position: relative;
@@ -16,6 +177,8 @@ const Header = styled.header`
   border-bottom: 1px solid #ececec;
   background-color: #fff;
   z-index: 220;
+  margin: 0 auto;
+  max-width: 1440px;
   @media only screen and (min-width: 1024px) {
     height: 60px;
   }
@@ -58,7 +221,7 @@ const HamburgerIcon = styled.span`
   }
 `;
 
-const Logo = styled.div`
+const LogoWrapper = styled.div`
   position: relative;
   height: 100%;
   min-height: 42px;
@@ -100,38 +263,14 @@ const IconWrapper = styled.div`
   line-height: 140%;
   letter-spacing: 1px;
   text-transform: uppercase;
-
+  cursor: pointer;
   font-weight: 400;
   width: 100%;
   transition: none;
-
   padding: 0 3px;
   .anticon {
     font-size: 18px;
   }
-`;
-
-const SearchModal = styled.ul`
-  display: ${(props) => (props.open ? 'flex' : 'none')};
-  height: calc(100vh - 50px);
-  align-items: flex-start;
-  background-color: #fff;
-  padding: 0;
-
-  top: 100%;
-  left: 0;
-  position: absolute;
-  min-width: 100%;
-  /* margin-top: 7px; */
-  z-index: 280;
-`;
-
-const SearchForm = styled(Form)`
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 100%;
-  margin: 40px auto;
 `;
 
 const Drawer = styled.div`
@@ -141,7 +280,6 @@ const Drawer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-
   background-color: #fff;
 `;
 
@@ -203,60 +341,17 @@ const DrawerSubMenuTitle = styled.div`
   }
 `;
 
-const submenus = [
-  {
-    title: 'Paintings',
-    route: '/',
-  },
-  {
-    title: 'Prints',
-    route: '/',
-  },
-  {
-    title: 'Photos',
-    route: '/',
-  },
-  {
-    title: 'Drawings',
-    route: '/',
-  },
-  {
-    title: 'Sculpture',
-    route: '/',
-  },
-  {
-    title: 'Artists',
-    route: '/',
-  },
-  {
-    title: 'Advisory',
-    route: '/',
-  },
-  {
-    title: 'Blog',
-    route: '/',
-  },
-];
+const isBrowser = typeof window !== 'undefined';
 
-function MenuMobile() {
-  const {
-    state: { cart },
-    dispatch,
-  } = useContext(PosteriorContext);
+let html;
+
+function Menu() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  let html;
-  useEffect(() => {
+  if (isBrowser) {
     html = document.querySelector('html');
-  }, []);
-
-  const onFinish = (value) => {
-    console.log('Success:', value);
-    dispatch({ type: 'SET_SEARCH_FILTER', term: value.term });
-    // dispatch({ type: 'FILTER_BY_TERM', term: value.term })
-    setSearchOpen(false);
-  };
+  }
 
   useEffect(() => {
     searchOpen || drawerOpen
@@ -264,6 +359,60 @@ function MenuMobile() {
       : (html.style.overflow = 'visible');
   }, [searchOpen]);
 
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-width: 1023px)',
+  });
+
+  if (isDesktopOrLaptop)
+    return (
+      <Header>
+        <Row
+          justify="space-between"
+          css={css`
+            max-width: 1440px;
+            margin: 0 auto;
+          `}
+        >
+          <Col>
+            <Logo />
+          </Col>
+          <Col>
+            <MenuWrapper>
+              {submenus.map((submenu) => (
+                <SubMenu key={submenu.title}>
+                  <SubMenuTitle>
+                    <SubMenuLink to={submenu.route}>
+                      {submenu.title}
+                    </SubMenuLink>
+                  </SubMenuTitle>
+                </SubMenu>
+              ))}
+            </MenuWrapper>
+          </Col>
+          <Col>
+            <MenuWrapper>
+              {icons.map((icon) => (
+                <SubMenu key={icon.title}>
+                  <SubMenuTitle>
+                    <SubMenuLink onClick={() => navigate(icon.route)}>
+                      {icon.component}
+                    </SubMenuLink>
+                  </SubMenuTitle>
+                </SubMenu>
+              ))}
+              <SubMenu>
+                <SubMenuTitle>
+                  <SubMenuLink onClick={() => setSearchOpen(!searchOpen)}>
+                    <SearchOutlined />
+                  </SubMenuLink>
+                </SubMenuTitle>
+              </SubMenu>
+            </MenuWrapper>
+          </Col>
+        </Row>
+        <Search open={searchOpen} setOpen={() => setSearchOpen()} />
+      </Header>
+    );
   return (
     <Header>
       <Row
@@ -283,10 +432,10 @@ function MenuMobile() {
           <HamburgerButton onClick={() => setDrawerOpen(true)}>
             <HamburgerIcon />
           </HamburgerButton>
-          {drawerOpen ? (
+          {drawerOpen && (
             <Drawer>
               <DrawerHeader>
-                <Logo>
+                <LogoWrapper>
                   <LogoLink to="/">
                     <HeaderLogo
                       css={css`
@@ -296,7 +445,7 @@ function MenuMobile() {
                       `}
                     />
                   </LogoLink>
-                </Logo>
+                </LogoWrapper>
                 <Button
                   icon={<CloseOutlined />}
                   onClick={() => setDrawerOpen(false)}
@@ -318,8 +467,6 @@ function MenuMobile() {
                 </DrawerSubMenu>
               </DrawerMenu>
             </Drawer>
-          ) : (
-            <></>
           )}
         </Col>
 
@@ -358,78 +505,9 @@ function MenuMobile() {
           </MenuHorizontal>
         </Col>
       </Row>
-
-      <SearchModal open={searchOpen}>
-        <div
-          css={css`
-            padding: 60px 30px 20px 20px;
-            margin: 0 auto;
-
-            background-color: transparent;
-            width: 100%;
-          `}
-        >
-          <Form
-            name="basic"
-            onFinish={onFinish}
-            layout="horizontal"
-            size="large"
-            css={css`
-              display: flex;
-              justify-content: space-around;
-              flex-wrap: wrap;
-              width: 100%;
-              margin: 40px auto;
-            `}
-          >
-            <Form.Item
-              name="term"
-              rules={[
-                {
-                  required: true,
-                  message:
-                    'Search is a required field, please make sure it is not empty',
-                },
-              ]}
-              wrapperCol={{ span: 24 }}
-              css={css`
-                width: 100%;
-              `}
-            >
-              <Input placeholder="What Are You Looking For?" />
-            </Form.Item>
-
-            <Form.Item
-              wrapperCol={{ span: 24 }}
-              labelCol={{ span: 24 }}
-              css={css`
-                width: 100%;
-              `}
-            >
-              <Button block size={'large'} htmlType="submit">
-                Search the site
-              </Button>
-            </Form.Item>
-          </Form>
-        </div>
-        <Button
-          type="default"
-          onClick={() => setSearchOpen(false)}
-          icon={<CloseOutlined />}
-          css={css`
-            position: absolute;
-            top: 5px;
-            right: 6px;
-            padding: 0 5px;
-
-            border: none;
-            color: #343434;
-            z-index: 281;
-          `}
-        />
-      </SearchModal>
+      <Search open={searchOpen} setOpen={() => setSearchOpen()} />
     </Header>
   );
 }
 
-export default MenuMobile;
+export default Menu;

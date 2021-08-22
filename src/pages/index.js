@@ -1,26 +1,24 @@
-import { graphql } from 'gatsby';
 import * as React from 'react';
+import { graphql } from 'gatsby';
+import { css } from '@emotion/react';
 import { getImage } from 'gatsby-plugin-image';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import Card from '../components/Elements/Card/Card';
 import { useInView } from 'react-intersection-observer';
-import Wrapper from '../components/Elements/Wrapper';
-import FilterSection from '../components/sections/FilterSection';
-import { PosteriorContext } from '../context/PosteriorContext';
-import { css } from '@emotion/react';
 
 import useFilter from '../hooks/useFilter';
+import Card from '../components/Elements/Card/Card';
+import Wrapper from '../components/Elements/Wrapper';
 import LayoutSwitcher from '../components/Elements/LayoutSwitcher/LayoutSwitcher';
+import Filter from '../components/Elements/Filter/Filter';
+import Breadcrumbs from '../components/Elements/Breadcrumbs';
+import { PosteriorContext } from '../context/PosteriorContext';
 
 const IndexPage = ({ data }) => {
   const [size, setSize] = React.useState(10);
   const paintings = useFilter();
   const [layout, setLayout] = React.useState('fluid');
 
-  const {
-    state: { artworks, filter },
-    dispatch,
-  } = React.useContext(PosteriorContext);
+  const { dispatch } = React.useContext(PosteriorContext);
 
   React.useEffect(() => {
     let uniqueSources = [
@@ -42,17 +40,26 @@ const IndexPage = ({ data }) => {
     dispatch({ type: 'SET_COLORS', colors: uniqueColors });
   }, []);
 
-  const { ref, inView, entry } = useInView({
+  const { ref, inView } = useInView({
     threshold: 0,
   });
 
   React.useEffect(() => {
     setSize(() => size + 10);
   }, [inView]);
-
   return (
     <>
-      <FilterSection />
+      <section
+        css={css`
+          background-color: #f4f2f1;
+        `}
+      >
+        <Wrapper wide>
+          <Breadcrumbs />
+          <Filter />
+        </Wrapper>
+      </section>
+
       <section
         css={css`
           min-height: 300px;

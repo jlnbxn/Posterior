@@ -54,6 +54,7 @@ const palette = [
       background-repeat: no-repeat;
       background-size: 50% 50%; ;
     `,
+    contrast: true,
   },
   {
     name: 'Black & White',
@@ -61,12 +62,14 @@ const palette = [
       background: linear-gradient(270deg, #000 50%, #fff 0);
       border: 1px solid #dfdcda; ;
     `,
+    contrast: true,
   },
   {
     name: 'White',
     css: css`
       background-color: #fff;
     `,
+    contrast: true,
   },
   {
     name: 'Black',
@@ -91,6 +94,7 @@ const palette = [
     css: css`
       background-color: #fff15f;
     `,
+    contrast: true,
   },
   {
     name: 'Green',
@@ -152,7 +156,7 @@ function Color({ mobile }) {
                       opacity: 1;
                       display: block;
                       font-size: 16px;
-                      color: #343434;
+                      color: ${el.contrast ? '#343434' : '#fff'};
                       position: absolute;
                       top: 50%;
                       left: 50%;

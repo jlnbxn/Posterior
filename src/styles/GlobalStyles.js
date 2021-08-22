@@ -114,6 +114,13 @@ function GlobalStyles() {
             vertical-align: middle;
           }
         }
+        .ant-input-affix-wrapper {
+          border-radius: 0;
+          &:hover {
+            border-color: #0500e8 !important;
+          }
+          border-color: #0500e8;
+        }
 
         .ant-select-dropdown {
           padding: 0;

@@ -143,7 +143,7 @@ const Slider = styled(AntdSlider)`
 
 function Price() {
   const {
-    state: { artworks, sources, artists, filter },
+    state: { filter },
     dispatch,
   } = useContext(PosteriorContext);
 

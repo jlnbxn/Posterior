@@ -10,6 +10,7 @@ const Root = styled.nav`
 const Item = styled.span`
   font-size: 14px;
   color: #7c7876;
+  cursor: default;
 `;
 
 function Seperator() {

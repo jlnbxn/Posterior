@@ -8,6 +8,7 @@ import Size from './Size';
 import Price from './Price';
 import Orientation from './Orientation';
 import FilterSelect from './FilterSelect';
+import { navigate } from 'gatsby';
 
 const { Option } = Select;
 
@@ -69,6 +70,7 @@ function Filter() {
   };
 
   const clearAllFilters = () => {
+    navigate('/');
     dispatch({ type: 'CLEAR_ALL_FILTERS' });
   };
 

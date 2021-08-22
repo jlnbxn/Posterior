@@ -15,11 +15,9 @@ export const StyledBurger = styled.button`
   cursor: pointer;
   padding: 0;
   z-index: 10;
-
   &:focus {
     outline: none;
   }
-
   div {
     width: 100%;
     height: 1px;
