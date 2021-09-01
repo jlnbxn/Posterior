@@ -4,8 +4,10 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.yourdomain.tld',
-    title: 'posterior',
+    title: 'Posterior',
+
+    titleTemplate: '%s | Posterior',
+    siteUrl: 'https://posterior.netlify.app',
   },
   plugins: [
     'gatsby-plugin-emotion',

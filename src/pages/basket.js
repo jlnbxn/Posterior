@@ -8,6 +8,7 @@ import { PosteriorContext } from '../context/PosteriorContext';
 import { Button as AntdButton } from 'antd';
 import { DeleteOutlined, HeartOutlined } from '@ant-design/icons';
 import { useShoppingCart } from 'use-shopping-cart';
+import Head from '../components/Layout/Head';
 
 const Root = styled.div`
   background-color: #f4f2f1;
@@ -262,6 +263,7 @@ function Basket() {
 
   return (
     <Root>
+      <Head title="Basket" />
       <Wrapper>
         <Row
           justify="space-between"

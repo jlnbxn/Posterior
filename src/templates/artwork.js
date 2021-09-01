@@ -9,6 +9,7 @@ import Wrapper from '../components/Elements/Wrapper';
 import { useShoppingCart } from 'use-shopping-cart';
 import Breadcrumbs from '../components/Elements/Breadcrumbs';
 import Section from '../components/Elements/Section';
+import Head from '../components/Layout/Head';
 
 export const query = graphql`
   query ($id: String!) {
@@ -91,6 +92,7 @@ const Artwork = ({ data, location }) => {
 
   return (
     <>
+      <Head title={artwork.name} />
       <Section>
         <Wrapper wide>
           <Breadcrumbs artist={artwork.artist} name={artwork.name} />

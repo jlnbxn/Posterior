@@ -12,6 +12,8 @@ import LayoutSwitcher from '../components/Elements/LayoutSwitcher/LayoutSwitcher
 import Filter from '../components/Elements/Filter/Filter';
 import Breadcrumbs from '../components/Elements/Breadcrumbs';
 import { PosteriorContext } from '../context/PosteriorContext';
+import { Helmet } from 'react-helmet';
+import Head from '../components/Layout/Head';
 
 const IndexPage = ({ data }) => {
   const [size, setSize] = React.useState(10);
@@ -49,6 +51,7 @@ const IndexPage = ({ data }) => {
   }, [inView]);
   return (
     <>
+      <Head title="Demo Poster Shop" />
       <section
         css={css`
           background-color: #f4f2f1;
