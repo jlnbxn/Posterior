@@ -167,124 +167,13 @@ function GlobalStyles() {
           background: #c0bff9;
         }
 
-        /* .anticon {
-            margin-right: 0;
-    padding: 0 4px;
-    line-height: 50px;
-    font-size: 18px;
-color:     #343434;
-svg {
-    width: 1em;
-    height: 1em;
-    fill: currentColor;
-    margin-top: -4px;
-    vertical-align: middle;
-}
-        }
-
-        .ant-btn {
-            color: #fff;
-    border-color: #222;
-    background: #222;
-        }
-
         .ant-btn-icon-only {
-            color: #222;
-    border: none;
-    background: transparent;
-    box-shadow: none;
-
-
+          border: none;
+          box-shadow: none;
+          line-height: 1;
+          text-align: center;
+          vertical-align: middle;
         }
-
-        .ant-slider {
-    margin-left: 20px;
-    margin-top: 14px;
-    touch-action: pan-y;
-
-    // Added this because of react-slick touch handling not optimised for React v17
-    // Please remove and test once antd is updated to v4
-
-    .slick-list, .slick-track {
-      touch-action: pan-y;
-    }
-
-    &:hover {
-      .ant-slider-rail {
-        background-color: #b6b5b1;
-      }
-
-      .ant-slider-dot {
-        border-color: #b6b5b1;
-      }
-    }
-
-    .ant-slider-rail {
-      transition: none;
-      background-color: #dfdcda;
-    }
-
-    .ant-slider-dot {
-      border-color: #dfdcda;
-    }
-
-    .ant-slider-track {
-      background-color: #222222;
-      transition: none;
-      touch-action: pan-y;
-    }
-    .ant-slider-handle:focus {
-      box-shadow: 0 0 0 5px #222222;
-    }
-
-    &:hover .ant-slider-track {
-      background-color: #222222;
-    }
-
-    &:hover .ant-slider-handle:not(.ant-tooltip-open) {
-      border-color: #222222;
-    }
-
-    &:hover .ant-slider-handle-click-focused,
-    &:hover .ant-slider-handle-click-focused:focus {
-      box-shadow: none ;
-      border-color: #222222;
-    }
-
-    .ant-slider:hover .ant-slider-handle, 
-    .ant-slider-handle,
-    .ant-slider-dot.ant-slider-dot-active {
-      border-color: #222222;
-    }
-
-    .ant-slider-handle-dragging.ant-slider-handle-dragging.ant-slider-handle-dragging {
-  border-color:  #222222;
-  box-shadow: none ;
-}
-
-    .ant-slider-handle-dragging {
-        border-color: #222222;
-    }
-
-
-    
-    .ant-slider-handle:active,
-    .ant-slider-handle:focus {
-      box-shadow: none;
-    }
-
-    .ant-slider-mark {
-      .slider-mark-text {
-   
-        font-size: 13px;
-        text-transform: uppercase;
-      }
-    }
-  }
-
-  .ant-slider-with-marks {
-        margin-bottom: 0;
-    } */
 
         body {
           margin: 0;

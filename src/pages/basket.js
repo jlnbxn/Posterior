@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import React, { useContext, useState } from 'react';
 import Wrapper from '../components/Elements/Wrapper';
 import { PosteriorContext } from '../context/PosteriorContext';
-import { Button } from 'antd';
+import { Button as AntdButton } from 'antd';
 import { DeleteOutlined, HeartOutlined } from '@ant-design/icons';
 import { useShoppingCart } from 'use-shopping-cart';
 
@@ -53,6 +53,14 @@ const TileSummary = styled.div`
 `;
 
 const TileList = styled.div``;
+
+const Button = styled(AntdButton)`
+  border: none;
+  box-shadow: none;
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
+`;
 
 const TileListItem = styled.div`
   padding: 20px 0 0;
