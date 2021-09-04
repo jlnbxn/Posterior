@@ -10,15 +10,9 @@ import Orientation from './Orientation';
 import FilterSelect from './FilterSelect';
 import { navigate } from 'gatsby';
 
-const { Option } = Select;
-
 const Root = styled.section`
   background-color: #f4f2f1;
   padding: 0;
-`;
-
-const select = css`
-  border-bottom: 1px solid #343434;
 `;
 
 const col = css`

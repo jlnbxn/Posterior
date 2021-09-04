@@ -24,6 +24,7 @@ export const query = graphql`
       height
       width
       image {
+        publicURL
         childImageSharp {
           gatsbyImageData
         }
@@ -90,6 +91,8 @@ const Artwork = ({ data, location }) => {
   const { addItem } = useShoppingCart();
   const artwork = data.artworksJson;
 
+  console.log(artwork);
+
   return (
     <>
       <Head title={artwork.name} />
@@ -143,6 +146,7 @@ const Artwork = ({ data, location }) => {
                   block
                   onClick={() => {
                     dispatch({ type: 'ADD_TO_CART', product: artwork });
+                    console.log({ ...artwork, image: artwork.image.publicURL });
                     addItem(artwork);
                   }}
                 >

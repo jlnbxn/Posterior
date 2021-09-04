@@ -25,7 +25,7 @@ function Seperator() {
   );
 }
 
-function Breadcrumbs({ location, artist, name }) {
+function Breadcrumbs({ artist, name }) {
   return (
     <Root>
       <Item>Home</Item>
