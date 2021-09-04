@@ -140,7 +140,9 @@ const Artwork = ({ data, location }) => {
                   </span>
                 </Dimensions>
                 <Prices>
-                  <span>{`$${artwork.price.toLocaleString('en-US')}`}</span>
+                  <span>{`$${Math.floor(artwork.price / 100).toLocaleString(
+                    'en-US'
+                  )}`}</span>
                 </Prices>
                 <Button
                   block

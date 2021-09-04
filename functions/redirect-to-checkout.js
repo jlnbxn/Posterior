@@ -2,11 +2,6 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const validateCartItems =
   require('use-shopping-cart/utilities').validateCartItems;
 
-// instead of returning a session ID to the client side for redirectToCheckout,
-// we can redirect serverside with the created sessions url (session.url)
-
-// const url = process.env.GATSBY_URL;
-
 exports.handler = async (event) => {
   const inventory = require('./data/artworks.json');
 
@@ -27,14 +22,6 @@ exports.handler = async (event) => {
   let line_items;
   try {
     line_items = validateCartItems(inventory, product);
-
-    // line_items.map((item, i) => {
-    //   console.log(item);
-    //     const publicURL = product[item.id]
-    //   item.price_data.product_data.images = [
-    //     'https://images.unsplash.com/photo-1630371251263-eb7796cd4118?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-    //   ];
-    // });
   } catch (error) {
     return {
       statusCode: 422,

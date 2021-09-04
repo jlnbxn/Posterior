@@ -78,15 +78,6 @@ module.exports = {
     },
     'gatsby-plugin-breadcrumb',
     {
-      resolve: `gatsby-source-stripe`,
-      options: {
-        objects: ['Product', 'Price'],
-        secretKey:
-          'sk_test_51JKgT9ASZ4DgRI1rm0uV257Pzt9gD9hfHDrNpqZCe3T5hfnxNCvLdYlTMvArntlAxEHQNITQQWtmPz3TsjhpIDCh00UxvIcBoR',
-        downloadFiles: true,
-      },
-    },
-    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'products',
