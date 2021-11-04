@@ -1,6 +1,6 @@
 const fs = require('fs');
-// Path is a Node.js library with utilities for working with file paths.
 const path = require('path');
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
@@ -31,7 +31,6 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 };
 
 exports.onPostBuild = async ({ graphql }) => {
-  // Run the GraphQL query (from example above).
   await graphql(`
     query MyQuery {
       allArtworksJson {
@@ -56,13 +55,7 @@ exports.onPostBuild = async ({ graphql }) => {
       }
     }
   `).then((result) => {
-    // A reference to where we are going to put the files. Note that the public
-    // directory already exists because the build has been completed (since
-    // we're in the onPostBuild hook).
     const postsPath = './functions/data';
-
-    // Collect the data for all earworms. This simply digs into the query result
-    // and extracts the objects we care about.
     const posts = result.data.allArtworksJson.nodes;
 
     const skus = posts.map((item) => {
