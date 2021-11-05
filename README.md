@@ -8,21 +8,64 @@ Create a proof of concept poster store site to demonstrate the capabilities of a
 
 ## Outcome
 
-Posterior is a mock online poster store selling, using Stripe’s API to handle the checkout process. Its database consists of a single .json file, using a collection of high-quality public domain images to create an appealing demonstration for a potential production site.
+**Posterior** is a mock online poster store selling, using Stripe’s API to handle the checkout process. Its database consists of a single .json file, using a collection of high-quality public domain images to create an appealing demonstration for a potential production site.
 
 It is heavily inspired by [riseart.com](https://www.riseart.com/), employing a similar design and functionality. For example, filters for image properties such as price, color, artist, and orientation. In addition, each product comes with a list of keywords that allow for topical searches.
 
 This demo also includes a shopping cart, making basket items persist across sessions.
 
-![Demo of filters](./docs/assets/img/filter-by-attributes.png 'Filter by a variety of the images` attributes.')
+<figure>
+  <img
+  src="./docs/assets/img/filter-by-attributes.png"
+  alt="Demo of filters"/>
+  <figcaption>Filter by a variety of the images' attributes</figcaption>
+</figure>
 
-![Demo of filtering by color](./docs/assets/img/filter-by-pink.png "Quickly find images containing pink from 1920's french art magazine Art-Goût-Beauté")
+<figure>
+  <img
+  src="./docs/assets/img/filter-by-pink.png"
+  alt="Demo of filtering by color"/>
+  <figcaption>Quickly find images containing pink from 1920's french art magazine Art-Goût-Beauté</figcaption>
+</figure>
 
-![View of basket](./docs/assets/img/basket.png 'Free shipping? What a steal!')
+<figure>
+  <img
+  src="./docs/assets/img/basket.png"
+  alt="View of basket"/>
+  <figcaption>Free shipping? What a steal!</figcaption>
+</figure>
 
-![Square view](./docs/assets/img/square-images.png 'Show images in a square ratio for more efficient space usage.')
+<figure>
+  <img
+  src="./docs/assets/img/square-images.png"
+  alt="Square view"/>
+  <figcaption>Show images in a square ratio for more efficient space usage</figcaption>
+</figure>
 
-![Stripe Checkout](./docs/assets/img/stripe-checkout.png 'Checkout using Stripe and a serverless function.')
+<figure>
+  <img
+  src="./docs/assets/img/stripe-checkout.png"
+  alt="Stripe Checkout"/>
+  <figcaption>Checkout using Stripe and a serverless function</figcaption>
+</figure>
+
+### Built With
+
+- [React.js](https://reactjs.org/)
+- [Netlify](https://netlify.com)
+- [Stripe API](https://stripe.com/docs/api)
+- [Gatsby](https://www.gatsbyjs.com/)
+
+## Getting Started
+
+1. [Sign up on Stripe](https://stripe.com/docs/development/quickstart#api-library)
+2. Create an .env file in the root of the project based on .env.example
+3. `npm install netlify-cli -g`
+4. `netlify dev`
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Background
 
@@ -36,7 +79,12 @@ I decided to look for royalty-free image sites and learned something new right a
 
 During my search, I stumbled upon [rawpixel.com](https://www.rawpixel.com/) and its [public domain board](https://www.rawpixel.com/category/53/public-domain), which had some of the highest quality free images, CC0 or not, I have yet to see on the web. While the site lists the source for each picture, they also digitally enhanced each one while keeping the CC0 license intact. (If you look up the original image, you will find that rawpixel did a great job rejuvenating them.)
 
-![Screenshot of Rawpixel board](./docs/assets/img/rawpixel-demo.png 'Who knew that public domain images could be so beautiful?')
+<figure>
+  <img
+  src="./docs/assets/img/rawpixel-demo.png"
+  alt="Screenshot of Rawpixel board"/>
+  <figcaption>Who knew that public domain images could be so beautiful?</figcaption>
+</figure>
 
 With my product selection decided on, I started the scraping process with [pupeteer](https://github.com/puppeteer/puppeteer), the headless Chrome browser. Not long after that, I changed my approach, realizing the site itself must be using an API to make their requests. I used some _inspect element_ magic and dug around in the network tab, where I found multiple XHR requests that allowed insight into the querying of their database. To find out their exact endpoints, I also looked at the source code, which contained a handful of base URLs. Finding out the query parameters took some trial and error, though.
 
